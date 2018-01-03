@@ -1,12 +1,12 @@
 (ns planet-coloniser.utils.ingest
-  (:require [clojure.data.json :as json]
-            [clojure.java.io :as io]))
+  (:require [clojure.data.json]))
+
 
 (defn ingest-json-file
   [dir-path file-name]
   (let [file-path (str dir-path file-name)]
-    (with-open [reader (io/reader file-path)]
-      (json/read reader))))
+    (with-open [reader (clojure.java.io/reader file-path)]
+      (clojure.data.json/read reader))))
 
 
 (defn gather-all-sensor-data!

@@ -1,5 +1,6 @@
 (ns planet-coloniser.sensor-processor
-  (:require [clojure.walk :as cw]))
+ (:require [clojure.walk]))
+
 
 (defn sensor-data->planet
   "Given a sensor key, a planetary hash-map, and a tuple having
@@ -37,10 +38,10 @@
   Also ensure all keys are keywordized, for convenient look-ups."
   [planets]
   (map (fn [[pname pdata]]
-         (let [keywordized-pdata (cw/keywordize-keys
+         (let [keywordized-pdata (clojure.walk/keywordize-keys
                                   pdata)]
            (assoc keywordized-pdata
-                  :name pname)))
+                  :pname pname)))
        planets))
 
 
